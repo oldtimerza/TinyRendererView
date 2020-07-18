@@ -1,0 +1,27 @@
+[
+{
+  "directory": "D:/Development/C++/MyTinyRenderer/src/render/build",
+  "command": "D:\\Applications\\VisualStudio2019\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DBUILD_DLL -DTinyRenderer_EXPORTS  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /FoCMakeFiles\\TinyRenderer.dir\\lib.cpp.obj /FdCMakeFiles\\TinyRenderer.dir/ /FS -c D:\\Development\\C++\\MyTinyRenderer\\src\\render\\lib.cpp",
+  "file": "D:/Development/C++/MyTinyRenderer/src/render/lib.cpp"
+},
+{
+  "directory": "D:/Development/C++/MyTinyRenderer/src/render/build",
+  "command": "D:\\Applications\\VisualStudio2019\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DBUILD_DLL -DTinyRenderer_EXPORTS  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /FoCMakeFiles\\TinyRenderer.dir\\geometry.cpp.obj /FdCMakeFiles\\TinyRenderer.dir/ /FS -c D:\\Development\\C++\\MyTinyRenderer\\src\\render\\geometry.cpp",
+  "file": "D:/Development/C++/MyTinyRenderer/src/render/geometry.cpp"
+},
+{
+  "directory": "D:/Development/C++/MyTinyRenderer/src/render/build",
+  "command": "D:\\Applications\\VisualStudio2019\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DBUILD_DLL -DTinyRenderer_EXPORTS  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /FoCMakeFiles\\TinyRenderer.dir\\buffer.cpp.obj /FdCMakeFiles\\TinyRenderer.dir/ /FS -c D:\\Development\\C++\\MyTinyRenderer\\src\\render\\buffer.cpp",
+  "file": "D:/Development/C++/MyTinyRenderer/src/render/buffer.cpp"
+},
+{
+  "directory": "D:/Development/C++/MyTinyRenderer/src/render/build",
+  "command": "D:\\Applications\\VisualStudio2019\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DBUILD_DLL -DTinyRenderer_EXPORTS  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /FoCMakeFiles\\TinyRenderer.dir\\model.cpp.obj /FdCMakeFiles\\TinyRenderer.dir/ /FS -c D:\\Development\\C++\\MyTinyRenderer\\src\\render\\model.cpp",
+  "file": "D:/Development/C++/MyTinyRenderer/src/render/model.cpp"
+},
+{
+  "directory": "D:/Development/C++/MyTinyRenderer/src/render/build",
+  "command": "D:\\Applications\\VisualStudio2019\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DBUILD_DLL -DTinyRenderer_EXPORTS  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /FoCMakeFiles\\TinyRenderer.dir\\render.cpp.obj /FdCMakeFiles\\TinyRenderer.dir/ /FS -c D:\\Development\\C++\\MyTinyRenderer\\src\\render\\render.cpp",
+  "file": "D:/Development/C++/MyTinyRenderer/src/render/render.cpp"
+}
+]
