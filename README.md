@@ -1,2 +1,2 @@
 # TinyRendererView
-Using my version of the TinyRenderer as a DLL used by a WPF application
+Using my version of the [TinyRenderer](https://github.com/ssloy/tinyrenderer) as a DLL which is then used by a WPF application to display and manipulate the render.
