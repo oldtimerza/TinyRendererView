@@ -14,9 +14,20 @@ EXPORT int load_model(const char *file_name)
     return 1;
 };
 
+
+EXPORT void rotate_about_y(float degrees)
+{
+    Render::GetInstance()->rotate_y(degrees);
+};
+
 EXPORT Buffer *render()
 {
     Render *renderer = Render::GetInstance();
     renderer->draw();
     return renderer->get_buffer();
 };
+
+EXPORT void clear()
+{
+    Render::GetInstance()->clear();
+}

@@ -8,6 +8,8 @@ extern "C"
 {
     EXPORT int init(int width, int height, int channels);
     EXPORT int load_model(const char *file_name);
+    EXPORT void rotate_about_y(float degrees);
+    EXPORT void clear();
     EXPORT Buffer *render();
 }
 

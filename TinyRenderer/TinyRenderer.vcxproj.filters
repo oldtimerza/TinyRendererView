@@ -1,54 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\Development\C++\MyTinyRenderer\src\render\lib.cpp">
+    <ClCompile Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\lib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Development\C++\MyTinyRenderer\src\render\geometry.cpp">
+    <ClCompile Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\geometry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Development\C++\MyTinyRenderer\src\render\buffer.cpp">
+    <ClCompile Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\buffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Development\C++\MyTinyRenderer\src\render\model.cpp">
+    <ClCompile Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Development\C++\MyTinyRenderer\src\render\render.cpp">
+    <ClCompile Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\render.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\Development\C++\MyTinyRenderer\src\render\lib.h">
+    <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\lib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Development\C++\MyTinyRenderer\src\render\face.h">
+    <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\face.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Development\C++\MyTinyRenderer\src\render\color.h">
+    <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Development\C++\MyTinyRenderer\src\render\geometry.h">
+    <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\geometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Development\C++\MyTinyRenderer\src\render\buffer.h">
+    <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\buffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Development\C++\MyTinyRenderer\src\render\model.h">
+    <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Development\C++\MyTinyRenderer\src\render\render.h">
+    <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Development\C++\MyTinyRenderer\src\render\CMakeLists.txt" />
+    <CustomBuild Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{D6A49CDD-0E9C-3B9C-B967-7F7DCA73BF60}</UniqueIdentifier>
+      <UniqueIdentifier>{F44CAAEA-E782-3264-BEF2-E2559DFB9BE3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{B7BCA186-22F8-30C9-93C7-7FEF5E3385AC}</UniqueIdentifier>
+      <UniqueIdentifier>{3ABA9594-BF4D-321E-B4E2-5203C53F40F1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

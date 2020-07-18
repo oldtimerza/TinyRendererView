@@ -29,7 +29,9 @@ public:
     static Render *GetInstance();
     static Render *GetInstance(int width, int height, int channels);
     void load_model(const char *file_name);
+    void rotate_y(float degrees);
     void draw();
+    void clear();
     Buffer *get_buffer();
 };
 

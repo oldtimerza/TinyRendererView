@@ -1,3 +1,0 @@
-D:/Development/C++/MyTinyRenderer/src/render/build/CMakeFiles/TinyRenderer.dir
-D:/Development/C++/MyTinyRenderer/src/render/build/CMakeFiles/edit_cache.dir
-D:/Development/C++/MyTinyRenderer/src/render/build/CMakeFiles/rebuild_cache.dir

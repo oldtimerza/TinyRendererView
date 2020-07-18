@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyRendererView", "TinyRendererView\TinyRendererView.csproj", "{0552A70C-CC5E-4588-B6C8-AAC9EB10C6B7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TinyRenderer", "TinyRenderer\TinyRenderer.vcxproj", "{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TinyRenderer", "TinyRenderer\TinyRenderer.vcxproj", "{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,22 +47,22 @@ Global
 		{0552A70C-CC5E-4588-B6C8-AAC9EB10C6B7}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{0552A70C-CC5E-4588-B6C8-AAC9EB10C6B7}.RelWithDebInfo|x86.ActiveCfg = Release|x86
 		{0552A70C-CC5E-4588-B6C8-AAC9EB10C6B7}.RelWithDebInfo|x86.Build.0 = Release|x86
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.Debug|x64.ActiveCfg = Debug|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.Debug|x64.Build.0 = Debug|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.Debug|x86.ActiveCfg = Debug|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.MinSizeRel|Any CPU.ActiveCfg = MinSizeRel|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.MinSizeRel|x86.ActiveCfg = MinSizeRel|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.Release|Any CPU.ActiveCfg = Release|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.Release|x64.ActiveCfg = Release|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.Release|x64.Build.0 = Release|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.Release|x86.ActiveCfg = Release|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.RelWithDebInfo|Any CPU.ActiveCfg = RelWithDebInfo|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
-		{6FD966AF-E874-3E4C-B3BA-B9076D0BDD66}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.Debug|x64.ActiveCfg = Debug|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.Debug|x64.Build.0 = Debug|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.Debug|x86.ActiveCfg = Debug|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.MinSizeRel|Any CPU.ActiveCfg = MinSizeRel|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.MinSizeRel|x86.ActiveCfg = MinSizeRel|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.Release|Any CPU.ActiveCfg = Release|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.Release|x64.ActiveCfg = Release|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.Release|x64.Build.0 = Release|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.Release|x86.ActiveCfg = Release|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.RelWithDebInfo|Any CPU.ActiveCfg = RelWithDebInfo|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{9CFEE77F-0082-33F7-AFC5-1BA2ED821CDC}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

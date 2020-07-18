@@ -82,11 +82,10 @@ D:/Applications/CMake/share/cmake-3.18/Modules/Platform/Windows-Determine-CXX.cm
 D:/Applications/CMake/share/cmake-3.18/Modules/Platform/Windows-MSVC-C.cmake
 D:/Applications/CMake/share/cmake-3.18/Modules/Platform/Windows-MSVC-CXX.cmake
 D:/Applications/CMake/share/cmake-3.18/Modules/Platform/Windows-MSVC.cmake
-D:/Applications/CMake/share/cmake-3.18/Modules/Platform/Windows-windres.cmake
 D:/Applications/CMake/share/cmake-3.18/Modules/Platform/Windows.cmake
 D:/Applications/CMake/share/cmake-3.18/Modules/Platform/WindowsPaths.cmake
-D:/Development/C++/MyTinyRenderer/src/render/CMakeFiles/3.18.0-rc4/CMakeCCompiler.cmake
-D:/Development/C++/MyTinyRenderer/src/render/CMakeFiles/3.18.0-rc4/CMakeCXXCompiler.cmake
-D:/Development/C++/MyTinyRenderer/src/render/CMakeFiles/3.18.0-rc4/CMakeRCCompiler.cmake
-D:/Development/C++/MyTinyRenderer/src/render/CMakeFiles/3.18.0-rc4/CMakeSystem.cmake
-D:/Development/C++/MyTinyRenderer/src/render/CMakeLists.txt
+D:/Development/C#/TinyRendererView/TinyRendererView/TinyRenderer/CMakeFiles/3.18.0-rc4/CMakeCCompiler.cmake
+D:/Development/C#/TinyRendererView/TinyRendererView/TinyRenderer/CMakeFiles/3.18.0-rc4/CMakeCXXCompiler.cmake
+D:/Development/C#/TinyRendererView/TinyRendererView/TinyRenderer/CMakeFiles/3.18.0-rc4/CMakeRCCompiler.cmake
+D:/Development/C#/TinyRendererView/TinyRendererView/TinyRenderer/CMakeFiles/3.18.0-rc4/CMakeSystem.cmake
+D:/Development/C#/TinyRendererView/TinyRendererView/TinyRenderer/CMakeLists.txt

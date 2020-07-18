@@ -60,16 +60,33 @@ void Render::draw(Face &face)
     }
 };
 
+void Render::rotate_y(float degrees)
+{
+    for (int i = 0; i < model->nfaces(); i++) 
+    {
+        Face* face = model->face(i);
+        for (int j = 0; j < 3; j++)
+        {
+            face->vertices[j] = transform_rotate_y(degrees, face->vertices[j]);
+        }
+    }
+};
+
 void Render::draw()
 {
     for (int i = 0; i < model->nfaces(); i++)
     {
-        Face *face = model->face(i);
+        Face* face = model->face(i);
         draw(*face);
     };
-}
+};
 
 Buffer *Render::get_buffer()
 {
     return buffer;
 };
+
+void Render::clear()
+{
+    buffer->clear();
+}
