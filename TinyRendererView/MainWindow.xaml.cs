@@ -1,22 +1,12 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TinyRendererView
 {
@@ -25,19 +15,14 @@ namespace TinyRendererView
     /// </summary>
     public partial class MainWindow : Window
     {
-        [DllImport("TinyRenderer.dll")]
-        static extern int init(int width, int height, int channels);
-
-        [DllImport("TinyRenderer.dll", CharSet = CharSet.Ansi)]
-        static extern int load_model(String file_name);
-
         [StructLayout(LayoutKind.Sequential)]
         public class RGBBuffer
         {
-            public IntPtr data;
             public int width;
             public int height;
             public int channels;
+            public IntPtr data;
+
             public byte[] GetData()
             {
                 int dataSize = width * height * channels;
@@ -47,14 +32,22 @@ namespace TinyRendererView
             }
         }
 
-        [DllImport("TinyRenderer.dll")]
-        static extern RGBBuffer render();
+        [DllImport("TinyRenderer.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern int init(int width, int height, int channels, RGBBuffer buffer);
+
+        [DllImport("TinyRenderer.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        static extern int load_model(String file_name);
+
+        [DllImport("TinyRenderer.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern int render();
 
         [DllImport("TinyRenderer.dll")]
         static extern void rotate_about_y(float degrees);
 
         [DllImport("TinyRenderer.dll")]
         static extern void clear();
+
+        static  RGBBuffer buffer = new RGBBuffer();
 
         public MainWindow()
         {
@@ -126,7 +119,7 @@ namespace TinyRendererView
                 }
             }
 
-            int success = init(800, 800, 3);
+            int success = init(800, 800, 3, buffer);
             if (success > 0)
             {
                 success = load_model(filePath);
@@ -139,15 +132,18 @@ namespace TinyRendererView
 
         private void Draw()
         {
-            RGBBuffer buffer = render();
+            //Native code modifies the buffer with the new RGB bytes data
+            render();
+            //This reads the data stored in the buffer at the supplied pointer address
             byte[] pixels = buffer.GetData();
-            Chart.Source = BuildImage(pixels, 800, 800, 2400, PixelFormat.Format24bppRgb);//This could do with an optimisation                 
+            //This byte to Bitmap conversion seems expensive and could be cleaned up.
+            Chart.Source = BuildImage(pixels, 800, 800, 2400, PixelFormat.Format24bppRgb);
         }
 
         private void button_rotateY_Click(object sender, RoutedEventArgs e)
         {
             clear();
-            rotate_about_y(30.0f);
+            rotate_about_y(0.1f);
             Draw();
         }
     }

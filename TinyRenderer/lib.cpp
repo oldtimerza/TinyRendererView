@@ -2,9 +2,13 @@
 #include "render.h"
 #include <fstream>
 
-EXPORT int init(int width, int height, int channels)
+EXPORT int init(int width, int height, int channels, Buffer* managed_buffer)
 {
-    Render::GetInstance(width, height, channels);
+    Render *renderer = Render::GetInstance(width, height, channels);
+    managed_buffer->set_width(renderer->get_buffer()->get_width());
+    managed_buffer->set_height(renderer->get_buffer()->get_height());
+    managed_buffer->set_channels(renderer->get_buffer()->get_channels());
+    managed_buffer->set_data(renderer->get_buffer()->get_data());
     return 1;
 };
 
@@ -20,11 +24,10 @@ EXPORT void rotate_about_y(float degrees)
     Render::GetInstance()->rotate_y(degrees);
 };
 
-EXPORT Buffer *render()
+EXPORT int render()
 {
-    Render *renderer = Render::GetInstance();
-    renderer->draw();
-    return renderer->get_buffer();
+    Render::GetInstance()->draw();
+    return 1;
 };
 
 EXPORT void clear()

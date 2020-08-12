@@ -131,9 +131,20 @@ bool Buffer::scale(int w, int h)
     return true;
 }
 
+void Buffer::set_width(int _width)
+{
+    width = _width;
+}
+
 int Buffer::get_width()
 {
     return width;
+};
+
+
+void Buffer::set_height(int _height)
+{
+    height = _height;
 };
 
 int Buffer::get_height()
@@ -145,3 +156,18 @@ int Buffer::get_channels()
 {
     return channels;
 };
+
+void Buffer::set_channels(int _channels)
+{
+    channels = _channels;
+};
+
+unsigned char* Buffer::get_data()
+{
+    return data;
+};
+
+void Buffer::set_data(unsigned char* _data) 
+{
+    data = _data;
+}
