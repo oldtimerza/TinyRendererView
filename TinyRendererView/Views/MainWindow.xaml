@@ -6,10 +6,9 @@
         xmlns:local="clr-namespace:TinyRendererView"
         mc:Ignorable="d"
         Title="MainWindow" Height="451.202" Width="701.403">
-    <Grid>
-        <Image x:Name="Chart" Margin="0,0,316.667,0"/>
-        <Button x:Name="button_Load" Content="Load" HorizontalAlignment="Left" Margin="591,9,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="button_Load_Click"/>
-        <Label x:Name="label_filePath" Content="Label" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Width="142"/>
-        <Button x:Name="button_rotateY" Content="Y" HorizontalAlignment="Left" Margin="546,176,0,0" VerticalAlignment="Top" Width="75" Click="button_rotateY_Click"/>
+    <Grid Margin="0,0,-6.333,0">
+        <Image x:Name="Chart" Margin="0,0,168.667,0" MouseMove="Chart_MouseMove"/>
+        <Button x:Name="button_Load" Content="Load" HorizontalAlignment="Left" Margin="543,41,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="button_Load_Click"/>
+        <Label x:Name="label_filePath" Content="Please load an OBJ model" HorizontalAlignment="Left" Margin="543,10,-0.333,0" VerticalAlignment="Top" Width="152"/>
     </Grid>
 </Window>

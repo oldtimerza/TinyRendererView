@@ -17,8 +17,10 @@ namespace TinyRendererView
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        const double DRAG_THRESHOLD = 1.0;
         RGBBuffer buffer = new RGBBuffer();
+        double mouseX = 0;
+        int mouseY = 0;
 
         public MainWindow()
         {
@@ -61,11 +63,23 @@ namespace TinyRendererView
             Chart.Source = ImageFactory.GetBitmap(pixels, 800, 800, 2400, PixelFormat.Format24bppRgb);
         }
 
-        private void button_rotateY_Click(object sender, RoutedEventArgs e)
+        private void Chart_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            TinyRendererWrapper.clear();
-            TinyRendererWrapper.rotate_about_y(0.1f);
-            Draw();
+            if(e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            {
+                double currentMouseX = e.GetPosition(this).X;
+                double difference = Math.Abs(currentMouseX - mouseX);
+                bool right = currentMouseX > mouseX;
+                float amount = right ? 0.1f : -0.1f;
+                if (difference  > DRAG_THRESHOLD)
+                {
+                    TinyRendererWrapper.clear();
+                    TinyRendererWrapper.rotate_about_y(amount);
+                    Draw();
+                }
+                mouseX = e.GetPosition(this).X;
+            }
+
         }
     }
 }
