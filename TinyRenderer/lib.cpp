@@ -27,6 +27,7 @@ EXPORT void rotate_about_y(float degrees)
 EXPORT int render()
 {
     Render::GetInstance()->draw();
+    Render::GetInstance()->get_buffer()->flip_vertically();
     return 1;
 };
 
