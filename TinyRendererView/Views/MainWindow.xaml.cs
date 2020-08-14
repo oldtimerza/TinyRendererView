@@ -1,14 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using TinyRendererView.Models;
 using TinyRendererView.Utilities;
@@ -28,7 +23,7 @@ namespace TinyRendererView
         private const float ROTATION_AMOUNT = 0.1f;
         private RGBBuffer buffer = new RGBBuffer();
         private double mouseX = 0;
-        private int mouseY = 0;
+        private double mouseY = 0;
         private bool loadedSuccessfully = false;
 
         public MainWindow()
@@ -77,14 +72,25 @@ namespace TinyRendererView
             if(Mouse.LeftButton == MouseButtonState.Pressed)
             {
                 double currentMouseX = Mouse.GetPosition(this).X;
-                double difference = Math.Abs(currentMouseX - mouseX);
+                double differenceX = Math.Abs(currentMouseX - mouseX);
                 bool right = currentMouseX > mouseX;
                 float amount = right ? ROTATION_AMOUNT : -1 * ROTATION_AMOUNT;
-                if (difference  > DRAG_THRESHOLD)
+                if (differenceX  > DRAG_THRESHOLD)
                 {
-                    TinyRendererWrapper.rotate_about_y(amount);
+                    TinyRendererWrapper.rotate(new Vector3(0.0f, amount, 0.0f));
                 }
+
+                double currentMouseY = Mouse.GetPosition(this).Y;
+                double differenceY = Math.Abs(currentMouseY - mouseY);
+                bool up = currentMouseY > mouseY;
+                amount = up ? ROTATION_AMOUNT : -1 * ROTATION_AMOUNT;
+                if (differenceY > DRAG_THRESHOLD)
+                {
+                    TinyRendererWrapper.rotate(new Vector3(amount, 0.0f, 0.0f));
+                }
+
                 mouseX = Mouse.GetPosition(this).X;
+                mouseY = Mouse.GetPosition(this).Y;
             }
             Draw();
         }

@@ -60,14 +60,22 @@ void Render::draw(Face &face)
     }
 };
 
-void Render::rotate_y(float degrees)
+void Render::rotate(Vec3f rotation_vector)
 {
     for (int i = 0; i < model->nfaces(); i++) 
     {
         Face* face = model->face(i);
         for (int j = 0; j < 3; j++)
         {
-            face->vertices[j] = transform_rotate_y(degrees, face->vertices[j]);
+            if (rotation_vector.x != 0) {
+				face->vertices[j] = transform_rotate_x(rotation_vector.x, face->vertices[j]);
+            }
+            if (rotation_vector.y != 0) {
+				face->vertices[j] = transform_rotate_y(rotation_vector.y, face->vertices[j]);
+            }
+            if (rotation_vector.z != 0) {
+				face->vertices[j] = transform_rotate_z(rotation_vector.z, face->vertices[j]);
+            }
         }
     }
 };

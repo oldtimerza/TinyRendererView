@@ -18,8 +18,8 @@ namespace TinyRendererView.Models
         [DllImport("TinyRenderer.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int render();
 
-        [DllImport("TinyRenderer.dll")]
-        public static extern void rotate_about_y(float degrees);
+        [DllImport("TinyRenderer.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void rotate(Vector3 rotation_vector);
 
         [DllImport("TinyRenderer.dll")]
         public static extern void clear();

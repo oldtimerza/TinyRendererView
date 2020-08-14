@@ -19,9 +19,9 @@ EXPORT int load_model(const char *file_name)
 };
 
 
-EXPORT void rotate_about_y(float degrees)
+EXPORT void rotate(Vec3f rotation_vector)
 {
-    Render::GetInstance()->rotate_y(degrees);
+    Render::GetInstance()->rotate(rotation_vector);
 };
 
 EXPORT int render()

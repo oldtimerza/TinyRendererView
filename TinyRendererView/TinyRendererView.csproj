@@ -102,6 +102,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\TinyRendererWrapper.cs" />
+    <Compile Include="Models\Vector3.cs" />
     <Compile Include="Utilities\ImageFactory.cs" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
