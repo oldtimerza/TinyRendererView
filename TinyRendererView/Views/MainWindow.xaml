@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TinyRendererView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="451.202" Width="701.403">
-    <Grid Margin="0,0,-6.333,0">
-        <Image x:Name="Chart" Margin="0,0,168.667,0"/>
-        <Button x:Name="button_Load" Content="Load" HorizontalAlignment="Left" Margin="543,41,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="button_Load_Click"/>
-        <Label x:Name="label_filePath" Content="Please load an OBJ model" HorizontalAlignment="Left" Margin="543,10,-0.333,0" VerticalAlignment="Top" Width="152"/>
-        <Button x:Name="stepButton" Content="Next frame" HorizontalAlignment="Left" Margin="543,186,0,0" VerticalAlignment="Top" Width="75" Click="stepButton_Click"/>
-        <CheckBox x:Name="Paused" Content="Paused" HorizontalAlignment="Left" Margin="543,112,0,0" VerticalAlignment="Top" Checked="pausedCheckbox_Checked" Unchecked="pausedCheckbox_Unchecked"/>
+        Title="MainWindow" Height="578.202" Width="934.403">
+    <Grid Margin="0,0,4,2.667">
+        <Image x:Name="Chart" Margin="0,0,323,0"/>
+        <Button x:Name="button_Load" Content="Load" HorizontalAlignment="Left" Margin="822,46,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="button_Load_Model_Click"/>
+        <Label x:Name="ModelFilePath" Content="Please load an OBJ model" HorizontalAlignment="Left" Margin="621,46,0,0" VerticalAlignment="Top" Width="152"/>
+        <Button x:Name="stepButton" Content="Rerender" HorizontalAlignment="Left" Margin="642,296,0,0" VerticalAlignment="Top" Width="75" Click="stepButton_Click"/>
+        <CheckBox x:Name="Paused" Content="Paused" HorizontalAlignment="Left" Margin="642,244,0,0" VerticalAlignment="Top" Checked="pausedCheckbox_Checked" Unchecked="pausedCheckbox_Unchecked"/>
+        <Button x:Name="LoadTexture" Content="Load" HorizontalAlignment="Left" Margin="822,108,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="button_Load_Texture_Click"/>
+        <GroupBox x:Name="groupBox" Header="Load" HorizontalAlignment="Left" Height="120" Margin="607,32,0,0" VerticalAlignment="Top" Width="307"/>
+        <Label x:Name="TextureFilePath" Content="Please load a TGA texture" HorizontalAlignment="Left" Margin="621,109,0,0" VerticalAlignment="Top" Width="152"/>
+        <GroupBox x:Name="groupBox1" Header="Debug" HorizontalAlignment="Left" Height="119" Margin="617,217,0,0" VerticalAlignment="Top" Width="297"/>
     </Grid>
 </Window>

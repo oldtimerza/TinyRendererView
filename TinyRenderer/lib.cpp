@@ -18,6 +18,11 @@ EXPORT int load_model(const char *file_name)
     return 1;
 };
 
+EXPORT int load_texture(const char* file_name)
+{
+    Render::GetInstance()->load_texture(file_name);
+    return 1;
+};
 
 EXPORT void rotate(Vec3f rotation_vector)
 {

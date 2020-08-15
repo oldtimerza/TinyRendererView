@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "model.h"
+#include "texture.h"
 #include "render.h"
 #include "geometry.h"
 #include "face.h"
@@ -39,10 +40,16 @@ Render::~Render()
     delete buffer;
 };
 
-void Render::load_model(const char *file_name)
+void Render::load_model(const char* file_name)
 {
     model = new Model(file_name);
-}
+};
+
+void Render::load_texture(const char* file_name)
+{
+    texture = new Texture();
+    texture->read_tga_file(file_name);
+};
 
 void Render::draw(Face &face, float *zbuffer)
 {

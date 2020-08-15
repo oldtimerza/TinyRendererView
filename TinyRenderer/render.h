@@ -4,6 +4,7 @@
 #include "face.h"
 #include "geometry.h"
 #include "model.h"
+#include "texture.h"
 #include "buffer.h"
 
 class Render
@@ -15,6 +16,7 @@ class Render
     int channels;
     static Render *singleton_;
     Model *model;
+    Texture *texture;
     Buffer *buffer;
 
 protected:
@@ -29,6 +31,7 @@ public:
     static Render *GetInstance();
     static Render *GetInstance(int width, int height, int channels);
     void load_model(const char *file_name);
+    void load_texture(const char* file_name);
     void rotate(Vec3f rotation_vector);
     void draw();
     void clear();

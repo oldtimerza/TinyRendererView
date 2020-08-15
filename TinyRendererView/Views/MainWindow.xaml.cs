@@ -25,6 +25,7 @@ namespace TinyRendererView
         private RGBBuffer buffer = new RGBBuffer();
         private double mouseX = 0;
         private double mouseY = 0;
+        private bool modelLoaded = false;
         private bool loadedSuccessfully = false;
         private bool paused = true;
 
@@ -35,6 +36,7 @@ namespace TinyRendererView
             tickTimer.Interval = TimeSpan.FromMilliseconds(SIXTY_FPS_MS);
             Paused.IsChecked = paused;
             stepButton.IsEnabled = paused;
+            LoadTexture.IsEnabled = false;
         }
 
         private void Render_Tick(object sender, EventArgs e)
@@ -83,24 +85,9 @@ namespace TinyRendererView
             Chart.Source = ImageFactory.GetBitmap(pixels, 800, 800, 2400, PixelFormat.Format24bppRgb);
         }
 
-        private void button_Load_Click(object sender, RoutedEventArgs e)
+        private void button_Load_Model_Click(object sender, RoutedEventArgs e)
         {
-            string filePath = "";
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            if (openFileDialog.ShowDialog() == true)
-            { 
-                try
-                {
-                    filePath = openFileDialog.FileName;
-                    label_filePath.Content = openFileDialog.FileName;
-                }
-                catch (SecurityException ex)
-                {
-                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
-                    $"Details:\n\n{ex.StackTrace}");
-                }
-            }
+            string filePath = getFileNameFromDialog();
 
             int success = TinyRendererWrapper.init(800, 800, 3, buffer);
             if (success > 0)
@@ -108,11 +95,26 @@ namespace TinyRendererView
                 success = TinyRendererWrapper.load_model(filePath);
                 if (success > 0)
                 {
-                    loadedSuccessfully = true;
-                    tickTimer.IsEnabled = true;
-                    //Draw initial frame 
-                    Draw();
+                    ModelFilePath.Content = filePath;
+                    modelLoaded = true;
+                    LoadTexture.IsEnabled = true;
                 }
+            }
+        }
+
+        private void button_Load_Texture_Click(object sender, RoutedEventArgs e)
+        {
+            if (!modelLoaded) { return; }
+
+            string filePath = getFileNameFromDialog();
+
+            int success = TinyRendererWrapper.load_texture(filePath);
+            if(success > 0)
+            {
+                TextureFilePath.Content = filePath;
+                loadedSuccessfully = true;
+                tickTimer.IsEnabled = true;
+                Draw();
             }
         }
 
@@ -134,6 +136,26 @@ namespace TinyRendererView
         {
             paused = false;
             stepButton.IsEnabled = false;
+        }
+
+        private string getFileNameFromDialog()
+        {
+            string filePath = "";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == true)
+            { 
+                try
+                {
+                    filePath = openFileDialog.FileName;
+                }
+                catch (SecurityException ex)
+                {
+                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
+                    $"Details:\n\n{ex.StackTrace}");
+                }
+            }
+            return filePath;
         }
     }
 }

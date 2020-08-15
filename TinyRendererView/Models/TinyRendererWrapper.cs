@@ -15,6 +15,9 @@ namespace TinyRendererView.Models
         [DllImport("TinyRenderer.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         public static extern int load_model(String file_name);
 
+        [DllImport("TinyRenderer.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int load_texture(String file_name);
+
         [DllImport("TinyRenderer.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int render();
 

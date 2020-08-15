@@ -304,6 +304,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="texture.cpp" />
     <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\lib.h" />
     <ClCompile Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\lib.cpp" />
     <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\face.h" />
@@ -317,6 +318,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\render.h" />
     <ClCompile Include="D:\Development\C#\TinyRendererView\TinyRendererView\TinyRenderer\render.cpp" />
     <ClInclude Include="matrix.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="transform.h" />
   </ItemGroup>
   <ItemGroup>
