@@ -44,9 +44,11 @@ void Render::load_model(const char *file_name)
     model = new Model(file_name);
 }
 
-void Render::draw(Face &face)
+void Render::draw(Face &face, float *zbuffer)
 {
-    Vec2i screen_coords[3];
+
+
+    Vec3f screen_coords[3];
     for (int j = 0; j < 3; j++)
     {
         screen_coords[j] = world_space_to_screen_space(face.vertices[j], width, height);
@@ -56,8 +58,28 @@ void Render::draw(Face &face)
     float intensity = (normal * light_dir) * 255;
     if (intensity > 0)
     {
-        triangle(screen_coords[0], screen_coords[1], screen_coords[2], *buffer, Color(intensity, intensity, intensity, 255));
+        triangle(screen_coords, zbuffer, *buffer, Color(intensity, intensity, intensity, 255));
     }
+
+};
+
+void Render::draw()
+{
+    float *zbuffer = new float[width * height];
+    for (int i = width * height; i--; zbuffer[i] = -std::numeric_limits<float>::max());
+
+    for (int i = 0; i < model->nfaces(); i++)
+    {
+        Face* face = model->face(i);
+        draw(*face, zbuffer);
+    };
+
+    delete[] zbuffer;
+};
+
+void Render::clear()
+{
+    buffer->clear();
 };
 
 void Render::rotate(Vec3f rotation_vector)
@@ -80,21 +102,7 @@ void Render::rotate(Vec3f rotation_vector)
     }
 };
 
-void Render::draw()
-{
-    for (int i = 0; i < model->nfaces(); i++)
-    {
-        Face* face = model->face(i);
-        draw(*face);
-    };
-};
-
 Buffer *Render::get_buffer()
 {
     return buffer;
 };
-
-void Render::clear()
-{
-    buffer->clear();
-}

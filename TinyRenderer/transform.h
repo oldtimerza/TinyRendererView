@@ -4,9 +4,9 @@
 #include "geometry.h"
 #include "matrix.h"
 
-Vec2i world_space_to_screen_space(Vec3f world_coord, int width, int height)
+Vec3f world_space_to_screen_space(Vec3f world_coord, int width, int height)
 {
-    return Vec2i((world_coord.x + 1.) * width / 2, (world_coord.y + 1.) * height / 2);
+    return Vec3f(int((world_coord.x + 1.) * width / 2. + .5), int((world_coord.y + 1.) * height / 2. + .5), world_coord.z);
 };
 
 

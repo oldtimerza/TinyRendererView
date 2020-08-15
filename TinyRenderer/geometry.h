@@ -86,6 +86,6 @@ std::ostream &operator<<(std::ostream &s, Vec3<t> &v)
 }
 
 void line(Vec2f v0, Vec2f v1, Buffer &buffer, Color color);
-void triangle(Vec2i t0, Vec2i t1, Vec2i t2, Buffer &buffer, Color color);
+void triangle(Vec3f *pts, float *zbuffer,Buffer &buffer, Color color);
 
 #endif //__GEOMETRY_H__

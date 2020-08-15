@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <vector>
 
 #include "buffer.h"
 #include "geometry.h"
@@ -50,31 +51,51 @@ void line(Vec2f v0, Vec2f v1, Buffer &buffer, Color color)
     }
 }
 
-void triangle(Vec2i t0, Vec2i t1, Vec2i t2, Buffer &buffer, Color color)
+
+Vec3f barycentric(Vec3f A, Vec3f B, Vec3f C, Vec3f P) 
 {
-    if (t0.y == t1.y && t0.y == t2.y)
-        return; // I dont care about degenerate triangles
-    // sort the vertices, t0, t1, t2 lower−to−upper (bubblesort yay!)
-    if (t0.y > t1.y)
-        std::swap(t0, t1);
-    if (t0.y > t2.y)
-        std::swap(t0, t2);
-    if (t1.y > t2.y)
-        std::swap(t1, t2);
-    int total_height = t2.y - t0.y;
-    for (int i = 0; i < total_height; i++)
+    Vec3f s[2];
+    for (int i = 2; i--; ) 
     {
-        bool second_half = i > t1.y - t0.y || t1.y == t0.y;
-        int segment_height = second_half ? t2.y - t1.y : t1.y - t0.y;
-        float alpha = (float)i / total_height;
-        float beta = (float)(i - (second_half ? t1.y - t0.y : 0)) / segment_height; // be careful: with above conditions no division by zero here
-        Vec2i A = t0 + (t2 - t0) * alpha;
-        Vec2i B = second_half ? t1 + (t2 - t1) * beta : t0 + (t1 - t0) * beta;
-        if (A.x > B.x)
-            std::swap(A, B);
-        for (int j = A.x; j <= B.x; j++)
+        s[i].x = C.raw[i] - A.raw[i];
+        s[i].y = B.raw[i] - A.raw[i];
+        s[i].z = A.raw[i] - P.raw[i];
+    }
+    Vec3f u = s[0] ^ s[1];
+    if (std::abs(u.raw[2]) > 1e-2) // dont forget that u[2] is integer. If it is zero then triangle ABC is degenerate
+        return Vec3f(1.f - (u.x + u.y) / u.z, u.y / u.z, u.x / u.z);
+    return Vec3f(-1, 1, 1); // in this case generate negative coordinates, it will be thrown away by the rasterizator
+};
+
+void triangle(Vec3f *pts, float *zbuffer, Buffer &buffer, Color color)
+{
+    int width = buffer.get_width();
+    int height = buffer.get_height();
+    Vec2f bboxmin(std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
+    Vec2f bboxmax(-std::numeric_limits<float>::max(), -std::numeric_limits<float>::max());
+    Vec2f clamp(width - 1,height - 1);
+    for (int i = 0; i < 3; i++) 
+    {
+        for (int j = 0; j < 2; j++) 
         {
-            buffer.set(j, t0.y + i, color); // attention, due to int casts t0.y+i != A.y
+            bboxmin.raw[j] = std::fmax(0.f, std::fmin(bboxmin.raw[j], pts[i].raw[j]));
+            bboxmax.raw[j] = std::fmin(clamp.raw[j], std::fmax(bboxmax.raw[j], pts[i].raw[j]));
+        }
+    }
+    Vec3f P;
+    for (P.x = bboxmin.x; P.x <= bboxmax.x; P.x++) 
+    {
+        for (P.y = bboxmin.y; P.y <= bboxmax.y; P.y++) 
+        {
+            Vec3f bc_screen = barycentric(pts[0], pts[1], pts[2], P);
+            if (bc_screen.x < 0 || bc_screen.y < 0 || bc_screen.z < 0) continue;
+            P.z = 0;
+            for (int i = 0; i < 3; i++) P.z += pts[i].z * bc_screen.raw[i];
+            if (zbuffer[int(P.x + P.y * width)] < P.z) 
+            {
+                zbuffer[int(P.x + P.y * width)] = P.z;
+                buffer.set(P.x, P.y, color);
+            }
         }
     }
 }

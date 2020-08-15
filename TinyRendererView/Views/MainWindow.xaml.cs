@@ -3,6 +3,7 @@ using System;
 using System.Drawing.Imaging;
 using System.Security;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using TinyRendererView.Models;
@@ -25,42 +26,15 @@ namespace TinyRendererView
         private double mouseX = 0;
         private double mouseY = 0;
         private bool loadedSuccessfully = false;
+        private bool paused = true;
 
         public MainWindow()
         {
             InitializeComponent();
             tickTimer.Tick += Render_Tick;
             tickTimer.Interval = TimeSpan.FromMilliseconds(SIXTY_FPS_MS);
-        }
-        private void button_Load_Click(object sender, RoutedEventArgs e)
-        {
-            string filePath = "";
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            if (openFileDialog.ShowDialog() == true)
-            { 
-                try
-                {
-                    filePath = openFileDialog.FileName;
-                    label_filePath.Content = openFileDialog.FileName;
-                }
-                catch (SecurityException ex)
-                {
-                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
-                    $"Details:\n\n{ex.StackTrace}");
-                }
-            }
-
-            int success = TinyRendererWrapper.init(800, 800, 3, buffer);
-            if (success > 0)
-            {
-                success = TinyRendererWrapper.load_model(filePath);
-                if (success > 0)
-                {
-                    loadedSuccessfully = true;
-                    tickTimer.IsEnabled = true;
-                }
-            }
+            Paused.IsChecked = paused;
+            stepButton.IsEnabled = paused;
         }
 
         private void Render_Tick(object sender, EventArgs e)
@@ -69,6 +43,12 @@ namespace TinyRendererView
             {
                 return;
             }
+
+            if(paused)
+            {
+                return;
+            }
+
             if(Mouse.LeftButton == MouseButtonState.Pressed)
             {
                 double currentMouseX = Mouse.GetPosition(this).X;
@@ -101,6 +81,59 @@ namespace TinyRendererView
             TinyRendererWrapper.render();
             byte[] pixels = buffer.GetData();
             Chart.Source = ImageFactory.GetBitmap(pixels, 800, 800, 2400, PixelFormat.Format24bppRgb);
+        }
+
+        private void button_Load_Click(object sender, RoutedEventArgs e)
+        {
+            string filePath = "";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == true)
+            { 
+                try
+                {
+                    filePath = openFileDialog.FileName;
+                    label_filePath.Content = openFileDialog.FileName;
+                }
+                catch (SecurityException ex)
+                {
+                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
+                    $"Details:\n\n{ex.StackTrace}");
+                }
+            }
+
+            int success = TinyRendererWrapper.init(800, 800, 3, buffer);
+            if (success > 0)
+            {
+                success = TinyRendererWrapper.load_model(filePath);
+                if (success > 0)
+                {
+                    loadedSuccessfully = true;
+                    tickTimer.IsEnabled = true;
+                    //Draw initial frame 
+                    Draw();
+                }
+            }
+        }
+
+        private void stepButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (paused)
+            {
+                Draw();
+            }
+        }
+
+        private void pausedCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            paused = true;
+            stepButton.IsEnabled = true;
+        }
+        
+        private void pausedCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            paused = false;
+            stepButton.IsEnabled = false;
         }
     }
 }

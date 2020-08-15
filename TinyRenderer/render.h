@@ -21,7 +21,7 @@ protected:
     Render();
     Render(int _width, int _height, int _channels);
     ~Render();
-    void draw(Face &face);
+    void draw(Face &face, float *zbuffer);
 
 public:
     Render(Render &other) = delete;
