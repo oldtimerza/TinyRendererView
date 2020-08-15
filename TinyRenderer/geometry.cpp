@@ -100,7 +100,7 @@ void triangle(Vec3f *pts, float *zbuffer, Buffer &buffer, Color color)
             Vec3f bc_screen = barycentric(pts[0], pts[1], pts[2], P);
             if (bc_screen.x < 0 || bc_screen.y < 0 || bc_screen.z < 0) continue;
             P.z = 0;
-            //We interpolate the Z values of the 3 points to get the Z value of P on the triangle.
+            //We interpolate the Z values of the 3 points using the weighted coords from barycentric calc to get the Z value of P on the triangle.
             for (int i = 0; i < 3; i++) P.z += pts[i].z * bc_screen.raw[i];
             if (zbuffer[int(P.x + P.y * width)] < P.z) 
             {
