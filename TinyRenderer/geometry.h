@@ -4,6 +4,7 @@
 #include <cmath>
 #include <ostream>
 #include "buffer.h"
+#include "texture.h"
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 template <class t>
@@ -86,6 +87,6 @@ std::ostream &operator<<(std::ostream &s, Vec3<t> &v)
 }
 
 void line(Vec2f v0, Vec2f v1, Buffer &buffer, Color color);
-void triangle(Vec3f *pts, float *zbuffer,Buffer &buffer, Color color);
+void triangle(Vec3f *pts, float *zbuffer,Buffer &buffer, Color color, Texture &texture, Vec2f *texture_coords);
 
 #endif //__GEOMETRY_H__

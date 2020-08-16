@@ -9,7 +9,7 @@ struct TGA_Header {
     char colormaptype;
     char datatypecode;
     short colormaporigin;
-    short colormaplength;
+    char colormaplength;
     char colormapdepth;
     short x_origin;
     short y_origin;

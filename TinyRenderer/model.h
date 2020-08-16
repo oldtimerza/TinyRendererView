@@ -9,6 +9,7 @@ class Model
 {
 private:
     std::vector<Vec3f> verts_;
+    std::vector<Vec2f> texture_coords_;
     std::vector<Face *> faces_;
 
 public:
@@ -17,6 +18,7 @@ public:
     int nverts(); // number of vertices
     int nfaces(); // number of faces
     Vec3f vert(int i);
+    Vec2f texture_coord(int i);
     Face *face(int idx);
 };
 

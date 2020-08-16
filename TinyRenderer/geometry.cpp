@@ -3,6 +3,7 @@
 
 #include "buffer.h"
 #include "geometry.h"
+#include "texture.h"
 
 void line(Vec2f v0, Vec2f v1, Buffer &buffer, Color color)
 {
@@ -77,7 +78,7 @@ Vec3f barycentric(Vec3f A, Vec3f B, Vec3f C, Vec3f P)
 	return Vec3f(w, v, u);
 };
 
-void triangle(Vec3f *pts, float *zbuffer, Buffer &buffer, Color color)
+void triangle(Vec3f *pts, float *zbuffer, Buffer &buffer, Color color, Texture &texture, Vec2f *texture_coords)
 {
     int width = buffer.get_width();
     int height = buffer.get_height();
@@ -104,8 +105,22 @@ void triangle(Vec3f *pts, float *zbuffer, Buffer &buffer, Color color)
             for (int i = 0; i < 3; i++) P.z += pts[i].z * bc_screen.raw[i];
             if (zbuffer[int(P.x + P.y * width)] < P.z) 
             {
+                //Interpolate texture coords
+                Vec2f interpolated_texture_coord;
+				for (int i = 0; i < 3; i++)
+				{
+                    interpolated_texture_coord = interpolated_texture_coord +  (texture_coords[i] * bc_screen.raw[i]);
+				}
+                int texture_u = int(texture.get_width() * interpolated_texture_coord.u);
+                int texture_v = int(texture.get_height() * interpolated_texture_coord.v);
+                TGAColor tga_color = texture.get(texture_u, texture_v);
+                int red = tga_color[2] * (color.r / 255.f);
+                int green = tga_color[1] * (color.g / 255.f);
+                int blue = tga_color[0] * (color.b / 255.f);
+                int alpha = tga_color[3];
+                Color final_color = Color(red, blue, green, alpha);
                 zbuffer[int(P.x + P.y * width)] = P.z;
-                buffer.set(P.x, P.y, color);
+                buffer.set(P.x, P.y, final_color);
             }
         }
     }

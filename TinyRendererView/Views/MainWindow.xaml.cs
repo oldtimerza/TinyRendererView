@@ -20,8 +20,8 @@ namespace TinyRendererView
         //For now it is fine
         private DispatcherTimer tickTimer = new DispatcherTimer();
         private const double SIXTY_FPS_MS = 1000 / 60;
-        private const double DRAG_THRESHOLD = 0.1;
-        private const float ROTATION_AMOUNT = 0.1f;
+        private const double DRAG_THRESHOLD = 0.2;
+        private const double MAX_DRAG_DISTANCE = 400.0;
         private RGBBuffer buffer = new RGBBuffer();
         private double mouseX = 0;
         private double mouseY = 0;
@@ -51,29 +51,32 @@ namespace TinyRendererView
                 return;
             }
 
-            if(Mouse.LeftButton == MouseButtonState.Pressed)
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
                 double currentMouseX = Mouse.GetPosition(this).X;
                 double differenceX = Math.Abs(currentMouseX - mouseX);
                 bool right = currentMouseX > mouseX;
-                float amount = right ? ROTATION_AMOUNT : -1 * ROTATION_AMOUNT;
-                if (differenceX  > DRAG_THRESHOLD)
+                float direction = right ? 1 : -1;
+                if (differenceX  > DRAG_THRESHOLD && differenceX < MAX_DRAG_DISTANCE)
                 {
+                    float amount = direction * (float)differenceX / 100.0f;
                     TinyRendererWrapper.rotate(new Vector3(0.0f, amount, 0.0f));
                 }
 
                 double currentMouseY = Mouse.GetPosition(this).Y;
                 double differenceY = Math.Abs(currentMouseY - mouseY);
                 bool up = currentMouseY > mouseY;
-                amount = up ? ROTATION_AMOUNT : -1 * ROTATION_AMOUNT;
-                if (differenceY > DRAG_THRESHOLD)
+                direction = up ? 1 : -1;
+                if (differenceY > DRAG_THRESHOLD && differenceY < MAX_DRAG_DISTANCE)
                 {
+                    float amount = direction * (float)differenceY / 100.0f;
                     TinyRendererWrapper.rotate(new Vector3(amount, 0.0f, 0.0f));
                 }
-
-                mouseX = Mouse.GetPosition(this).X;
-                mouseY = Mouse.GetPosition(this).Y;
             }
+
+            mouseX = Mouse.GetPosition(this).X;
+            mouseY = Mouse.GetPosition(this).Y;
+
             Draw();
         }
 

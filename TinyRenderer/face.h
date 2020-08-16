@@ -6,6 +6,7 @@
 struct Face
 {
     Vec3f vertices[3];
+    Vec2f texture_coords[3];
 };
 
 #endif

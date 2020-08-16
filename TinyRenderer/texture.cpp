@@ -81,7 +81,7 @@ bool Texture::read_tga_file(const char *filename) {
         std::cerr << "unknown file format " << (int)header.datatypecode << "\n";
         return false;
     }
-    if (!(header.imagedescriptor & 0x20)) {
+    if (header.imagedescriptor & 0x20) {
         flip_vertically();
     }
     if (header.imagedescriptor & 0x10) {

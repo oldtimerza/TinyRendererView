@@ -53,8 +53,6 @@ void Render::load_texture(const char* file_name)
 
 void Render::draw(Face &face, float *zbuffer)
 {
-
-
     Vec3f screen_coords[3];
     for (int j = 0; j < 3; j++)
     {
@@ -65,7 +63,7 @@ void Render::draw(Face &face, float *zbuffer)
     float intensity = (normal * light_dir) * 255;
     if (intensity > 0)
     {
-        triangle(screen_coords, zbuffer, *buffer, Color(intensity, intensity, intensity, 255));
+        triangle(screen_coords, zbuffer, *buffer, Color(intensity, intensity, intensity, 255), *texture, face.texture_coords);
     }
 
 };
@@ -75,12 +73,15 @@ void Render::draw()
     float *zbuffer = new float[width * height];
     for (int i = width * height; i--; zbuffer[i] = -std::numeric_limits<float>::max());
 
+    Vec2i* texture_coords = new Vec2i[2];
+
     for (int i = 0; i < model->nfaces(); i++)
     {
         Face* face = model->face(i);
         draw(*face, zbuffer);
     };
 
+    delete[] texture_coords;
     delete[] zbuffer;
 };
 
